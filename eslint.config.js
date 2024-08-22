@@ -7,6 +7,7 @@ export default antfu({
       'ts/explicit-function-return-type': 'off',
     },
   },
+  lessOpinionated: true,
 }, {
   rules: {
     'no-console': 'off',
