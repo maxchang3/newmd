@@ -38,6 +38,7 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "lint": "eslint .",
+
     "prepublishOnly": "pnpm run build",
     "release": "bumpp && pnpm publish",
     "start": "esno src/index.ts",
