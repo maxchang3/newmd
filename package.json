@@ -58,6 +58,13 @@
     "vite": "^5.3.4",
     "vitest": "^2.0.3"
   },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "eslint": "9"
+      }
+    }
+  },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
   },
