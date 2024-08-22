@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest'
+import { readConfig } from '@/config'
 
-describe('should', () => {
-    it('exported', () => {
-        expect(1).toEqual(1)
+describe('readConfig', () => {
+    it('should read the correct configuration file', async () => {
+        const config = await readConfig('./fixtures/createmd.config.ts', import.meta.url)
+        expect(config.schema).toBeDefined()
     })
 })
