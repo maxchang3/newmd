@@ -2,8 +2,12 @@
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["ESNext"],
+    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "resolveJsonModule": true,
     "strict": true,
     "strictNullChecks": true,

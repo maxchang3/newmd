@@ -44,6 +44,9 @@
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
+  "dependencies": {
+    "vite-tsconfig-paths": "^5.0.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.23.0",
     "@types/node": "^20.14.11",
