@@ -11,7 +11,6 @@
     "url": "git+https://github.com/maxchang3/createmd.git"
   },
   "bugs": "https://github.com/maxchang3/createmd/issues",
-  "keywords": [],
   "sideEffects": false,
   "exports": {
     ".": {
@@ -38,7 +37,6 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-
     "prepublishOnly": "pnpm run build",
     "release": "bumpp && pnpm publish",
     "start": "esno src/index.ts",
