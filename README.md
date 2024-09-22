@@ -1,6 +1,6 @@
-# createmd
+# newmd
 
-Create markdown file with frontmatter with Zod.
+Create markdown file with frontmatter using Zod schema.
 
 ## License
 
