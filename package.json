@@ -1,16 +1,16 @@
 {
-  "name": "createmd",
+  "name": "newmd",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@9.5.0",
   "author": "Max Chang <maxcfoo@hotmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/maxchang3/createmd#readme",
+  "homepage": "https://github.com/maxchang3/newmd#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxchang3/createmd.git"
+    "url": "git+https://github.com/maxchang3/newmd.git"
   },
-  "bugs": "https://github.com/maxchang3/createmd/issues",
+  "bugs": "https://github.com/maxchang3/newmd/issues",
   "sideEffects": false,
   "exports": {
     ".": {
