@@ -1,5 +1,4 @@
 import type { z } from 'zod'
-// import { tsImport } from 'tsx/esm/api'
 import type { CreateMDConfig } from './types'
 
 export const defineConfig = <S extends z.AnyZodObject>(config: CreateMDConfig<S>) => config
