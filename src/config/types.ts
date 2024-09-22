@@ -1,15 +1,5 @@
-import type { z } from 'zod'
+import type { z } from '.'
 
-type BaseSchemaWithoutEffects =
-  | z.AnyZodObject
-  | z.ZodUnion<[BaseSchemaWithoutEffects, ...BaseSchemaWithoutEffects[]]>
-  | z.ZodDiscriminatedUnion<string, z.AnyZodObject[]>
-  | z.ZodIntersection<BaseSchemaWithoutEffects, BaseSchemaWithoutEffects>
-
-export type BaseSchema =
-  | BaseSchemaWithoutEffects
-  | z.ZodEffects<BaseSchemaWithoutEffects>
-
-export interface CreateMDConfig<S extends BaseSchema> {
-    schema?: S
+export interface CreateMDConfig<S extends z.AnyZodObject> {
+    schema: S
 }
