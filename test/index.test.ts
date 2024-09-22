@@ -11,10 +11,12 @@ describe('readConfig', () => {
 })
 
 describe('getDefaultsForSchema', () => {
-    it('should correctly return the default values for the configuration schema', async () => {
+    it('should correctly return the default values for the schema', async () => {
         const config = await readConfig('./fixtures/createmd.config.mjs', import.meta.url)
         const schemaDefaults = getDefaultsForSchema(config.schema)
-        console.log(schemaDefaults)
         expect(schemaDefaults).toBeDefined()
+        const { success, data } = config.schema.safeParse(schemaDefaults)
+        expect(success).toBe(true)
+        expect(data).toBeDefined()
     })
 })
