@@ -1,9 +1,12 @@
+import fs from 'node:fs/promises'
 import { resolveConfig } from '@/config'
 import { getFrontmatter } from '@/utils'
 import { Command, Option } from 'clipanion'
-import { init as getDefaultObj } from 'zod-empty'
+import { slug as slugify } from 'github-slugger'
+import { resolve } from 'pathe'
+import { init as getDefault } from 'zod-empty'
 
-class CreateCommand extends Command {
+export class CreateCommand extends Command {
     static usage = Command.Usage({
         description: `Create a markdown file with frontmatter`,
         details: `
@@ -22,21 +25,28 @@ class CreateCommand extends Command {
 
     cwd = Option.String('--cwd', { hidden: true })
 
-    toml = Option.Boolean('--toml', false, { description: 'Output frontmatter in TOML format' })
+    toml = Option.Boolean('--toml', { description: 'Output frontmatter in TOML format' })
 
     async execute() {
-        const config = await resolveConfig({ cwd: this.cwd })
+        const config = await resolveConfig({
+            cwd: this.cwd,
+            toml: this.toml,
+        })
         const schema = config.schemas[this.schemaName]
         if (!schema) {
             this.context.stderr.write(`Schema "${this.schemaName}" not found\n`)
             return 1
         }
-        const defaultObj = getDefaultObj(schema)
-        const frontmatter = getFrontmatter(defaultObj, this.toml)
-        this.context.stdout.write(`${frontmatter}\n`)
+
+        const defaultData = getDefault(schema)
+        const frontmatter = getFrontmatter(defaultData, config.toml)
+        const filename = slugify(this.title)
+        const outputDir = resolve(config.cwd, config.path)
+        const filepath = resolve(outputDir, `${filename}.md`)
+
+        await fs.mkdir(outputDir, { recursive: true })
+        await fs.writeFile(filepath, frontmatter)
+
+        this.context.stdout.write(`File created at ${filepath}\n`)
     }
 }
-
-export const commands = [
-    CreateCommand,
-]

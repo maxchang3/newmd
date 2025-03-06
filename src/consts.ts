@@ -1,7 +1,9 @@
-import type { NewMDConfig } from '@/types'
+import type { DefaultOptions } from '@/types'
 import { z } from 'zod'
 
-export const DEFAULT_OPTIONS: NewMDConfig = {
+export const DEFAULT_OPTIONS: DefaultOptions = {
+    toml: false,
+    path: './src/data/blog',
     schemas: {
         blog: z.object({
             title: z.string(),

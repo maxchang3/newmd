@@ -1,23 +1,24 @@
-import type { NewMDConfig, Options } from '@/types'
+import type { Options } from '@/types'
 import process from 'node:process'
 import { DEFAULT_OPTIONS } from '@/consts'
 import deepmerge from 'deepmerge'
 import { createConfigLoader } from 'unconfig'
 
-export const resolveConfig = async <T extends Options>(options: T) => {
-    const loader = createConfigLoader<NewMDConfig>({
+export const resolveConfig = async (options: Options) => {
+    const loader = createConfigLoader<Options>({
         sources: [
             {
                 files: 'newmd.config',
                 extensions: ['ts', 'mjs', 'js'],
             },
         ],
-        cwd: options.cwd || process.cwd(),
+        cwd: options.cwd ?? process.cwd(),
     })
 
     const loadResult = await loader.load()
 
-    if (!loadResult.sources.length) return DEFAULT_OPTIONS
+    // Respect config file when no explicit options are provided
+    if (!loadResult.sources.length) return deepmerge(DEFAULT_OPTIONS, options)
 
-    return deepmerge(DEFAULT_OPTIONS, loadResult.config)
+    return deepmerge(deepmerge(DEFAULT_OPTIONS, loadResult.config), options)
 }
