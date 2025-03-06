@@ -32,7 +32,9 @@ export class CreateCommand extends Command {
             cwd: this.cwd,
             toml: this.toml,
         })
+
         const schema = config.schemas[this.schemaName]
+
         if (!schema) {
             this.context.stderr.write(`Schema "${this.schemaName}" not found\n`)
             return 1
