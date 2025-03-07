@@ -1,11 +1,11 @@
 import fs from 'node:fs/promises'
 import process from 'node:process'
 import { resolveConfig } from '@/config'
-import { getFrontmatter } from '@/utils'
+import { createFrontmatter } from '@/utils'
 import { Command, Option } from 'clipanion'
 import { slug as slugify } from 'github-slugger'
 import { resolve } from 'pathe'
-import { init as getDefault } from 'zod-empty'
+import { init as createSchemaDefaults } from 'zod-empty'
 
 export class CreateCommand extends Command {
     static usage = Command.Usage({
@@ -53,11 +53,10 @@ export class CreateCommand extends Command {
             return 1
         }
 
-        const defaultData = getDefault(schema) as Record<string, unknown>
-        const frontmatter = getFrontmatter(defaultData, config.toml)
+        const defaultData = createSchemaDefaults(schema) as Record<string, unknown>
+        const frontmatter = createFrontmatter(defaultData, config.toml)
         const filename = slugify(this.slug ?? this.title)
         const outputDir = resolve(this.cwd, config.path)
-
         const filepath = resolve(outputDir, `${filename}.md`)
 
         await fs.mkdir(outputDir, { recursive: true })
