@@ -1,4 +1,6 @@
 import type { Config } from '@/types'
+import packageJson from '@/../package.json'
+
 import { z } from 'zod'
 
 export const DEFAULT_CONFIG: Required<Config> = {
@@ -13,3 +15,5 @@ export const DEFAULT_CONFIG: Required<Config> = {
         }),
     },
 }
+
+export { packageJson }

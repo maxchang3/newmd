@@ -1,6 +1,6 @@
 import process from 'node:process'
-import packageJson from '@/../package.json'
 import { commands } from '@/commands'
+import { packageJson } from '@/consts'
 import { Cli } from 'clipanion'
 
 const initCli = () => {
