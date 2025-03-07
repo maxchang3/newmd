@@ -57,9 +57,6 @@ importers:
       lint-staged:
         specifier: ^15.4.3
         version: 15.4.3
-      pnpm:
-        specifier: ^10.6.1
-        version: 10.6.1
       simple-git-hooks:
         specifier: ^2.11.1
         version: 2.11.1
@@ -2115,11 +2112,6 @@ packages:
 
   pnpm-catalogs-utils@0.1.0:
     resolution: {integrity: sha512-avysWJc452htYTnae14ENYTI3fSzZ1U1xNrdSJ2kFgwDaDvdEKIM5Iu+WljP2cdr/HAKKQ1hnuvu3sQJ3Eq/zQ==}
-
-  pnpm@10.6.1:
-    resolution: {integrity: sha512-QO4Jr0B/qfu1+/uOHLQPu3TArww+EOkiTXtTx2WFKGFbLJJFDnTPrZHjotyv485AUNgL2nHXV3VtLOK2YhPpow==}
-    engines: {node: '>=18.12'}
-    hasBin: true
 
   postcss-calc@10.1.1:
     resolution: {integrity: sha512-NYEsLHh8DgG/PRH2+G9BTuUdtf9ViS+vdoQ0YA5OQdGsfN4ztiwtDWNtBl9EKeqNMFnIu8IKZ0cLxEQ5r5KVMw==}
@@ -4984,8 +4976,6 @@ snapshots:
   pnpm-catalogs-utils@0.1.0:
     dependencies:
       yaml: 2.7.0
-
-  pnpm@10.6.1: {}
 
   postcss-calc@10.1.1(postcss@8.5.3):
     dependencies:
