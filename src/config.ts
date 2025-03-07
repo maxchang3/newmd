@@ -1,11 +1,10 @@
 import type { Config } from '@/types'
-import process from 'node:process'
-import { DEFAULT_OPTIONS } from '@/consts'
-import deepmerge from 'deepmerge'
+import { DEFAULT_CONFIG } from '@/consts'
+import { deepmerge } from 'deepmerge-ts'
 import { createConfigLoader } from 'unconfig'
 
 export const resolveConfig = async (config: Config, options: {
-    cwd?: string
+    cwd: string
 }) => {
     const loader = createConfigLoader<Config>({
         sources: [
@@ -14,13 +13,13 @@ export const resolveConfig = async (config: Config, options: {
                 extensions: ['ts', 'mjs', 'js'],
             },
         ],
-        cwd: options.cwd ?? process.cwd(),
+        cwd: options.cwd,
     })
 
     const loadResult = await loader.load()
 
     // Respect config file when no explicit options are provided
-    if (!loadResult.sources.length) return deepmerge(DEFAULT_OPTIONS, options)
+    if (!loadResult.sources.length) return deepmerge(DEFAULT_CONFIG, config) as Required<Config>
 
-    return deepmerge(deepmerge(DEFAULT_OPTIONS, loadResult.config), options)
+    return deepmerge(deepmerge(DEFAULT_CONFIG, loadResult.config), config) as Required<Config>
 }
