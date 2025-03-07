@@ -33,6 +33,10 @@ export default defineConfig({
 })
 ```
 
+## Credits
+
+This project won't be possible without [@toiroakr](https://github.com/toiroakr)'s [zod-empty](https://github.com/toiroakr/zod-empty/).
+
 ## License
 
 [MIT](./LICENSE) License © 2024-PRESENT [Max Chang](https://github.com/maxchang3)
