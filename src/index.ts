@@ -1,5 +1,5 @@
-import type { Options } from '@/types'
+import type { Config } from '@/types'
 
 export { z } from 'zod'
 
-export const defineConfig = (config: Partial<Options>) => config
+export const defineConfig = (config: Partial<Config>) => config

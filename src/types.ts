@@ -1,7 +1,6 @@
 import type { ZodTypeAny } from 'zod'
 
-export interface Options {
-    cwd?: string
+export interface Config {
     /**
      * Root path for the markdown file.
      */
@@ -15,7 +14,3 @@ export interface Options {
      */
     schemas?: Record<string, ZodTypeAny>
 }
-
-type RequiredExcept<T, K extends keyof T> = Required<Omit<T, K>> & Pick<T, K>
-
-export type DefaultOptions = RequiredExcept<Options, 'path' | 'cwd'>

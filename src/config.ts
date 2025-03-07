@@ -1,11 +1,13 @@
-import type { Options } from '@/types'
+import type { Config } from '@/types'
 import process from 'node:process'
 import { DEFAULT_OPTIONS } from '@/consts'
 import deepmerge from 'deepmerge'
 import { createConfigLoader } from 'unconfig'
 
-export const resolveConfig = async (options: Options) => {
-    const loader = createConfigLoader<Options>({
+export const resolveConfig = async (config: Config, options: {
+    cwd?: string
+}) => {
+    const loader = createConfigLoader<Config>({
         sources: [
             {
                 files: 'newmd.config',

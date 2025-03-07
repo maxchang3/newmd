@@ -23,14 +23,18 @@ export class CreateCommand extends Command {
 
     title = Option.String({ required: true })
 
-    cwd = Option.String('--cwd', { hidden: true })
+    cwd = Option.String('--cwd')
+
+    filepath = Option.String('--path')
 
     toml = Option.Boolean('--toml', { description: 'Output frontmatter in TOML format' })
 
     async execute() {
         const config = await resolveConfig({
-            cwd: this.cwd,
             toml: this.toml,
+            path: this.filepath,
+        }, {
+            cwd: this.cwd,
         })
 
         const schema = config.schemas[this.schemaName]
@@ -40,7 +44,7 @@ export class CreateCommand extends Command {
             return 1
         }
 
-        const defaultData = getDefault(schema)
+        const defaultData = getDefault(schema) as Record<string, unknown>
         const frontmatter = getFrontmatter(defaultData, config.toml)
         const filename = slugify(this.title)
         const outputDir = resolve(config.cwd, config.path)

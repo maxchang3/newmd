@@ -1,7 +1,7 @@
-import type { DefaultOptions } from '@/types'
+import type { Config } from '@/types'
 import { z } from 'zod'
 
-export const DEFAULT_OPTIONS: DefaultOptions = {
+export const DEFAULT_OPTIONS: Required<Config> = {
     toml: false,
     path: './src/data/blog',
     schemas: {
