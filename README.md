@@ -20,6 +20,8 @@ Run the following command in your terminal:
 npx newmd blog "Hello World"
 ```
 
+or using `pnpx`(`pnpm dlx`):
+
 ```sh
 pnpx newmd blog "Hello World"
 ```
