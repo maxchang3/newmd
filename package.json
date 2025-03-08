@@ -30,8 +30,7 @@
     "release": "bumpp && pnpm publish",
     "start": "esno src/cli.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "clipanion": "4.0.0-rc.4",
