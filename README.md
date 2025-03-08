@@ -35,7 +35,7 @@ export default defineConfig({
 
 ## Credits
 
-This project won't be possible without [@toiroakr](https://github.com/toiroakr)'s [zod-empty](https://github.com/toiroakr/zod-empty/).
+This project won't be possible without [@toiroakr](https://github.com/toiroakr)'s [zod-empty](https://github.com/toiroakr/zod-empty/) and other open-source projects.
 
 ## License
 
