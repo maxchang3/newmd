@@ -52,8 +52,8 @@ export class CreateCommand extends Command {
             this.context.stderr.write(`Schema "${this.schemaName}" not found\n`)
             return 1
         }
+        const defaultData = createSchemaDefaults(schema)
 
-        const defaultData = createSchemaDefaults(schema) as Record<string, unknown>
         const frontmatter = createFrontmatter(defaultData, config.toml)
         const filename = slugify(this.slug ?? this.title)
         const outputDir = resolve(this.cwd, config.path)

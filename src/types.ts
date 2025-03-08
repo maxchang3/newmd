@@ -1,4 +1,4 @@
-import type { ZodTypeAny } from 'zod'
+import type { AnyZodObject } from 'zod'
 
 export interface Config {
     /**
@@ -12,5 +12,5 @@ export interface Config {
     /**
      * Array of Zod schemas to be used for data generation.
      */
-    schemas?: Record<string, ZodTypeAny>
+    schemas?: Record<string, AnyZodObject>
 }
