@@ -37,10 +37,14 @@ Will create a markdown file with the following content:
 ```md
 ---
 title: Hello World
-description: ""
-pubDate: 2024-01-01T00:00:00.000Z
+description: ''
+pubDate: 2025-03-09T01:57:00.000Z
 ---
 ```
+
+<sup>\* The `pubDate` field will be the current date and time.</sup>
+
+<sup>\* The default output path is `./src/data/blog`.</sup>
 
 See `newmd --help` for more details.
 
