@@ -24,14 +24,6 @@ npx newmd blog "Hello World"
 pnpx newmd blog "Hello World"
 ```
 
-or install it globally, and run `newmd`:
-
-```sh
-npm install -g newmd
-# pnpm install -g newmd
-# yarn global add newmd
-```
-
 Will create a markdown file with the following content:
 
 ```md
@@ -46,7 +38,7 @@ pubDate: 2025-03-09T01:57:00.000Z
 
 <sup>\* The default output path is `./src/data/blog`.</sup>
 
-See `newmd --help` for more details.
+See `newmd --help` for more details, you can install it globally for convenience.
 
 ## Config file
 
