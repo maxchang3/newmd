@@ -17,8 +17,7 @@ export class CreateCommand extends Command {
 
             2. Generate empty frontmatter from the specified schema template in the config
 
-            3. Creates output file using \`<title>\` or \`--slug\` for filename construction,
-              if  \`--slug\` is not provided, \`<title>\` will be automatically slugified as filename.
+            3. Creates output file using \`<title>\` or \`--slug\` for filename construction.
         `,
         examples: [[
             `Create from \`blog\` schema with title "Hello World"`,
@@ -34,9 +33,9 @@ export class CreateCommand extends Command {
 
     filepath = Option.String('--path', { description: 'Specify the output directory' })
 
-    toml = Option.Boolean('--toml', { description: 'Whether to use toml format for frontmatter' })
+    slug = Option.String('--slug', { description: 'Specify the slug for the filename, if not provided, it will be generated from the slugified title.' })
 
-    slug = Option.String('--slug', { description: 'Specify the slug for the filename' })
+    toml = Option.Boolean('--toml', { description: 'Whether to use toml format for frontmatter' })
 
     async execute() {
         const config = await resolveConfig({
