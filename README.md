@@ -18,10 +18,16 @@ Run the following command in your terminal:
 
 ```sh
 npx newmd blog "Hello World"
-# or
+```
+
+```sh
 pnpx newmd blog "Hello World"
-# or install it globally
-# npm install -g newmd
+```
+
+or install it globally, and run `newmd`:
+
+```sh
+npm install -g newmd
 # pnpm install -g newmd
 # yarn global add newmd
 ```
