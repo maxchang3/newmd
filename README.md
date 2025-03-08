@@ -8,7 +8,7 @@
   npx newmd blog "Hello World"
 </pre>
 
-<sup>\* `blog` is the default schema with `title`, `description`, `pubDate`, and `updatedDate` fields. You can specify your own schema in the config file.</sup>
+<sup>\* `blog` is the default schema with some fields. You can specify your own schema in the config file.</sup>
 
 ## Usage
 
