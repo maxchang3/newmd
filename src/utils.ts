@@ -3,16 +3,21 @@ import yaml from 'js-yaml'
 import TOML from 'smol-toml'
 import { init as createSchemaDefaults } from 'zod-empty'
 
-export const createFrontmatter = (schema: AnyZodObject, options: {
-    title: string
-    titleKey: string
-    toml: boolean
-}) => {
-    const defaultData = createSchemaDefaults(schema)
-    if (options.titleKey in defaultData) {
-        defaultData[options.titleKey] = options.title
-    }
-    const fence = options.toml ? '+++' : '---'
-    const frontmatter = options.toml ? TOML.stringify(defaultData) : yaml.dump(defaultData).trim()
+export const generateFrontmatter = (data: Record<string, any>, toml: boolean) => {
+    const fence = toml ? '+++' : '---'
+    const frontmatter = toml ? TOML.stringify(data) : yaml.dump(data).trim()
     return `${fence}\n${frontmatter}\n${fence}\n`
+}
+
+export const generateFrontmatterFromSchema = (schema: AnyZodObject, options: {
+    title: string
+    titleKey?: string
+    toml?: boolean
+}) => {
+    const { title, titleKey = 'title', toml = false } = options
+    const defaultData = createSchemaDefaults(schema)
+    if (titleKey in defaultData) {
+        defaultData[titleKey] = title
+    }
+    return generateFrontmatter(defaultData, toml)
 }

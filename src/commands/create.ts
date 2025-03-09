@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import process from 'node:process'
 import { resolveConfig } from '@/config'
-import { createFrontmatter } from '@/utils'
+import { generateFrontmatterFromSchema } from '@/utils'
 import { Command, Option } from 'clipanion'
 import { slug as slugify } from 'github-slugger'
 import { resolve } from 'pathe'
@@ -51,7 +51,7 @@ export class CreateCommand extends Command {
             return 1
         }
 
-        const frontmatter = createFrontmatter(schema, {
+        const frontmatter = generateFrontmatterFromSchema(schema, {
             title: this.title,
             titleKey: typeof config.titleMapping === 'string' ? config.titleMapping : config.titleMapping[this.schemaName],
             toml: config.toml,
