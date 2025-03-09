@@ -1,10 +1,7 @@
-import fs from 'node:fs/promises'
-import process from 'node:process'
 import { resolveConfig } from '@/config'
-import { generateFrontmatterFromSchema } from '@/utils'
+import { generateFrontmatterFromSchema, writeMarkdownFile } from '@/utils'
 import { Command, Option } from 'clipanion'
 import { slug as slugify } from 'github-slugger'
-import { resolve } from 'pathe'
 
 export class CreateCommand extends Command {
     static usage = Command.Usage({
@@ -28,7 +25,7 @@ export class CreateCommand extends Command {
 
     title = Option.String()
 
-    cwd = Option.String('--cwd', process.cwd(), { description: 'Specify the current working directory' })
+    cwd = Option.String('--cwd', { description: 'Specify the current working directory' })
 
     filepath = Option.String('--path', { description: 'Specify the output directory' })
 
@@ -57,12 +54,11 @@ export class CreateCommand extends Command {
             toml: config.toml,
         })
 
-        const filename = slugify(this.slug ?? this.title)
-        const outputDir = resolve(this.cwd, config.path)
-        const filepath = resolve(outputDir, `${filename}.md`)
-
-        await fs.mkdir(outputDir, { recursive: true })
-        await fs.writeFile(filepath, frontmatter)
+        const filepath = await writeMarkdownFile({
+            filename: slugify(this.slug ?? this.title),
+            content: frontmatter,
+            path: config.path,
+        })
 
         this.context.stdout.write(`File created at ${filepath}\n`)
     }

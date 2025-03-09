@@ -1,5 +1,7 @@
 import type { AnyZodObject } from 'zod'
+import fs from 'node:fs/promises'
 import yaml from 'js-yaml'
+import { resolve } from 'pathe'
 import TOML from 'smol-toml'
 import { init as createSchemaDefaults } from 'zod-empty'
 
@@ -20,4 +22,21 @@ export const generateFrontmatterFromSchema = (schema: AnyZodObject, options: {
         defaultData[titleKey] = title
     }
     return generateFrontmatter(defaultData, toml)
+}
+
+export const writeMarkdownFile = async (options: {
+    filename: string
+    content: string
+    path: string
+    cwd?: string
+}) => {
+    const { filename, content, path, cwd } = options
+
+    const outputDir = resolve(cwd ?? '', path)
+    const filepath = resolve(outputDir, `${filename}.md`)
+
+    await fs.mkdir(outputDir, { recursive: true })
+    await fs.writeFile(filepath, content)
+
+    return filepath
 }

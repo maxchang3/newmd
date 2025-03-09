@@ -4,7 +4,7 @@ import { deepmerge } from 'deepmerge-ts'
 import { createConfigLoader } from 'unconfig'
 
 export const resolveConfig = async (config: Config, options: {
-    cwd: string
+    cwd?: string
 }) => {
     const loader = createConfigLoader<Config>({
         sources: [
