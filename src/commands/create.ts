@@ -5,7 +5,6 @@ import { createFrontmatter } from '@/utils'
 import { Command, Option } from 'clipanion'
 import { slug as slugify } from 'github-slugger'
 import { resolve } from 'pathe'
-import { init as createSchemaDefaults } from 'zod-empty'
 
 export class CreateCommand extends Command {
     static usage = Command.Usage({
@@ -51,9 +50,13 @@ export class CreateCommand extends Command {
             this.context.stderr.write(`Schema "${this.schemaName}" not found\n`)
             return 1
         }
-        const defaultData = createSchemaDefaults(schema)
 
-        const frontmatter = createFrontmatter(defaultData, config.toml)
+        const frontmatter = createFrontmatter(schema, {
+            title: this.title,
+            titleKey: typeof config.titleMapping === 'string' ? config.titleMapping : config.titleMapping[this.schemaName],
+            toml: config.toml,
+        })
+
         const filename = slugify(this.slug ?? this.title)
         const outputDir = resolve(this.cwd, config.path)
         const filepath = resolve(outputDir, `${filename}.md`)

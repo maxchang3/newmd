@@ -14,6 +14,7 @@ export const DEFAULT_CONFIG: Required<Config> = {
             updatedDate: z.coerce.date().optional(),
         }),
     },
+    titleMapping: 'title',
 }
 
 export { packageJson }
