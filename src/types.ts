@@ -5,7 +5,7 @@ type Expand<T> = T extends infer O ? O : never
 
 type StringKeys<T> = Expand<{ [K in keyof T]: T[K] extends string ? K : never }[keyof T]>
 
-type TitleMapping<
+type ExtractStringKeys<
     Schemas extends Record<string, AnyZodObject>,
     K extends keyof Schemas,
 > = StringKeys<z.infer<Schemas[K]>>
@@ -39,5 +39,5 @@ export interface Config<Schemas extends Record<string, AnyZodObject> = Record<st
      *
      * @defaultValue "title"
      */
-    titleMapping?: TitleMapping<Schemas, keyof Schemas> | { [K in keyof Schemas]?: TitleMapping<Schemas, K> }
+    titleMapping?: ExtractStringKeys<Schemas, keyof Schemas> | { [K in keyof Schemas]?: ExtractStringKeys<Schemas, K> }
 }
