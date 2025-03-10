@@ -6,7 +6,7 @@ const fixtureDir = resolve(__dirname, 'fixtures')
 
 describe('config', () => {
     it('should return default config', async () => {
-        const config = await resolveConfig()
+        const config = await resolveConfig({}, { cwd: fixtureDir })
         expect(config).matchSnapshot()
     })
 
