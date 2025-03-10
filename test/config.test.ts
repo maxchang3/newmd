@@ -1,11 +1,10 @@
-import { describe, expect, it } from 'vitest'
-import { resolveConfig } from "@/config";
+import { resolveConfig } from '@/config'
 import { resolve } from 'pathe'
+import { describe, expect, it } from 'vitest'
 
 const fixtureDir = resolve(__dirname, 'fixtures')
 
 describe('config', () => {
-
     it('should return default config', async () => {
         const config = await resolveConfig()
         expect(config).matchSnapshot()
@@ -17,4 +16,3 @@ describe('config', () => {
         expect(config).matchSnapshot()
     })
 })
-
