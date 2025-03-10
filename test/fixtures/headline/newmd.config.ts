@@ -1,11 +1,11 @@
-import type { Config } from '@/types'
 import { z } from 'zod'
+import { defineConfig } from '../../../src/index'
 
-export default ({
+export default (defineConfig({
     titleMapping: 'headline',
     schemas: {
         blog: z.object({
-            heading: z.string(),
+            headline: z.string(),
         }),
     },
-}) as Config
+}))
