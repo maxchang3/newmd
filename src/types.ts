@@ -7,7 +7,7 @@ type StringKeys<T> = Expand<{ [K in keyof T]: T[K] extends string ? K : never }[
 
 type ExtractStringKeys<
     Schemas extends Record<string, AnyZodObject>,
-    K extends keyof Schemas,
+    K extends keyof Schemas = keyof Schemas,
 > = StringKeys<z.infer<Schemas[K]>>
 
 export interface Config<Schemas extends Record<string, AnyZodObject> = Record<string, AnyZodObject>> {
@@ -39,5 +39,5 @@ export interface Config<Schemas extends Record<string, AnyZodObject> = Record<st
      *
      * @defaultValue "title"
      */
-    titleMapping?: ExtractStringKeys<Schemas, keyof Schemas> | { [K in keyof Schemas]?: ExtractStringKeys<Schemas, K> }
+    titleMapping?: ExtractStringKeys<Schemas> | { [K in keyof Schemas]?: ExtractStringKeys<Schemas, K> }
 }
