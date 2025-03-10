@@ -1,8 +1,10 @@
-import type { AnyZodObject } from 'zod'
+import type { AnyZodObject, z } from 'zod'
 
 export type TitleMapping = string | Record<string, string>
 
-export interface Config {
+type StringKeys<T> = { [K in keyof T]: T[K] extends string ? K : never }[keyof T]
+
+export interface Config<Schemas extends Record<string, AnyZodObject> = Record<string, AnyZodObject>> {
     /**
      * Root path for the markdown file.
      */
@@ -14,12 +16,14 @@ export interface Config {
     /**
      * Array of Zod schemas to be used for data generation.
      */
-    schemas?: Record<string, AnyZodObject>
+    schemas?: Schemas
     /**
      * Mapping for the `title` input to a specific schema field.
      *
      * - If a string is provided, it is used as the default key for all schemas.
+     *   - the key must exist in all schemas, and the value must be a string
      * - If an object is provided, it maps specific schemas to different keys.
+     *   - the key must exist in the specified schema, and the value must be a string
      *
      * Example usage:
      * ```ts
@@ -29,5 +33,5 @@ export interface Config {
      *
      * @defaultValue "title"
      */
-    titleMapping?: TitleMapping
+    titleMapping?: StringKeys<z.infer<Schemas[keyof Schemas]>> | { [K in keyof Schemas]?: StringKeys<z.infer<Schemas[K]>> }
 }

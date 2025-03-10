@@ -1,9 +1,9 @@
 import type { Config } from '@/types'
 import packageJson from '@/../package.json'
-
+import { defineConfig } from '@/index'
 import { z } from 'zod'
 
-export const DEFAULT_CONFIG: Required<Config> = {
+export const DEFAULT_CONFIG = defineConfig({
     toml: false,
     path: './src/data/blog',
     schemas: {
@@ -15,6 +15,6 @@ export const DEFAULT_CONFIG: Required<Config> = {
         }),
     },
     titleMapping: 'title',
-}
+} as const satisfies Required<Config>)
 
 export { packageJson }
