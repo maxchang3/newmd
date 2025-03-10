@@ -1,6 +1,9 @@
 import type { AnyZodObject, z } from 'zod'
 
-type StringKeys<T> = { [K in keyof T]: T[K] extends string ? K : never }[keyof T]
+// Simple expand types, not perfect but works for this use case
+type Expand<T> = T extends infer O ? O : never
+
+type StringKeys<T> = Expand<{ [K in keyof T]: T[K] extends string ? K : never }[keyof T]>
 
 export interface Config<Schemas extends Record<string, AnyZodObject> = Record<string, AnyZodObject>> {
     /**
