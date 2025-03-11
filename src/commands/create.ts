@@ -26,6 +26,8 @@ export class CreateCommand extends Command {
 
     title = Option.String()
 
+    content = Option.String('--content', { description: 'Set the content of the markdown file' })
+
     cwd = Option.String('--cwd', { description: 'Set the current working directory' })
 
     filepath = Option.String('--path', { description: 'Set the output directory' })
@@ -62,7 +64,7 @@ export class CreateCommand extends Command {
 
         const filepath = await writeMarkdownFile({
             filename: slugify(this.slug ?? this.title),
-            content: frontmatter.toString(this.title),
+            content: `${frontmatter.toString(this.title)}\n${this.content ?? ''}`,
             path: config.path,
         })
 
