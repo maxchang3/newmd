@@ -3,12 +3,14 @@ import type { AnyZodObject, z } from 'zod'
 // Simple expand types, not perfect but works for this use case
 type Expand<T> = T extends infer O ? O : never
 
-type StringKeys<T> = Expand<{ [K in keyof T]: T[K] extends string ? K : never }[keyof T]>
+export type StringKeys<T> = Expand<{ [K in keyof T]: T[K] extends string ? K : never }[keyof T]>
 
-type ExtractZodStringKeys<
+export type ZodStringKeys<Schema extends AnyZodObject> = StringKeys<z.infer<Schema>>
+
+type ZodStringKeysFromSchemas<
     Schemas extends Record<string, AnyZodObject>,
     K extends keyof Schemas = keyof Schemas,
-> = StringKeys<z.infer<Schemas[K]>>
+> = ZodStringKeys<Schemas[K]>
 
 export interface Config<Schemas extends Record<string, AnyZodObject> = Record<string, AnyZodObject>> {
     /**
@@ -39,5 +41,5 @@ export interface Config<Schemas extends Record<string, AnyZodObject> = Record<st
      *
      * @defaultValue "title"
      */
-    titleMapping?: ExtractZodStringKeys<Schemas> | { [K in keyof Schemas]?: ExtractZodStringKeys<Schemas, K> }
+    titleMapping?: ZodStringKeysFromSchemas<Schemas> | { [K in keyof Schemas]?: ZodStringKeysFromSchemas<Schemas, K> }
 }

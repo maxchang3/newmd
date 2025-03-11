@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`frontmatter > should throw error if title key is not found in metadata 1`] = `[Error: Title key "title" not found in metadata]`;

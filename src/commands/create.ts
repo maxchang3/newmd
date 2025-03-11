@@ -1,5 +1,6 @@
 import { resolveConfig } from '@/config'
-import { generateFrontmatterFromSchema, writeMarkdownFile } from '@/utils'
+import { writeMarkdownFile } from '@/utils'
+import { Frontmatter } from '@/utils/frontmatter'
 import { Command, Option } from 'clipanion'
 import { slug as slugify } from 'github-slugger'
 
@@ -48,15 +49,20 @@ export class CreateCommand extends Command {
             return 1
         }
 
-        const frontmatter = generateFrontmatterFromSchema(schema, {
-            title: this.title,
-            titleKey: typeof config.titleMapping === 'string' ? config.titleMapping : config.titleMapping[this.schemaName],
-            toml: config.toml,
-        })
+        const titleKey = typeof config.titleMapping === 'string' ? config.titleMapping : config.titleMapping[this.schemaName]
+
+        if (!titleKey) {
+            this.context.stderr.write(`Title key for schema "${this.schemaName}" not found\n`)
+            return 1
+        }
+
+        const type = this.toml ? 'toml' : 'yaml'
+
+        const frontmatter = Frontmatter.fromZodSchema(schema, { titleKey, type })
 
         const filepath = await writeMarkdownFile({
             filename: slugify(this.slug ?? this.title),
-            content: frontmatter,
+            content: frontmatter.toString(this.title),
             path: config.path,
         })
 

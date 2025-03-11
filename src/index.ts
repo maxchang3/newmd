@@ -3,10 +3,6 @@ import type { AnyZodObject } from 'zod'
 
 export { z } from 'zod'
 
-export function defineConfig<
+export const defineConfig = <
     Schemas extends Record<string, AnyZodObject>,
->(
-    config: Config<Schemas>,
-): Config<Schemas> {
-    return config
-}
+>(config: Config<Schemas>): Config<Schemas> => config
