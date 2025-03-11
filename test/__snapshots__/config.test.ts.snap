@@ -2,7 +2,7 @@
 
 exports[`config > should return default config 1`] = `
 {
-  "path": "./src/data/blog",
+  "path": ".",
   "schemas": {
     "blog": ZodObject {
       "_cached": null,
@@ -85,7 +85,7 @@ exports[`config > should return default config 1`] = `
 
 exports[`config > should return merged config 1`] = `
 {
-  "path": "./src/data/blog",
+  "path": ".",
   "schemas": {
     "blog": ZodObject {
       "_cached": null,
