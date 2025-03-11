@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 export const DEFAULT_CONFIG = defineConfig({
     toml: false,
-    path: './src/data/blog',
+    path: '.',
     schemas: {
         blog: z.object({
             title: z.string(),
