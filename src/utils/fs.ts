@@ -17,7 +17,7 @@ export const writeMarkdownFile = async (options: {
     if (content) fileContent += `\n${content}`
 
     await fs.mkdir(outputDir, { recursive: true })
-    await fs.writeFile(filepath, fileContent)
+    await fs.writeFile(filepath, fileContent, { flag: 'wx' })
 
     return filepath
 }

@@ -70,4 +70,15 @@ export class CreateCommand extends Command {
 
         this.context.stdout.write(`File created at ${filepath}\n`)
     }
+
+    async catch(error: unknown) {
+        const { code: errorCode } = error as { code?: string }
+        switch (errorCode) {
+            case 'EEXIST':
+                this.context.stderr.write(`File already exists\n`)
+                return
+            default:
+                throw error
+        }
+    }
 }
