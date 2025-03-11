@@ -18,3 +18,7 @@ export const DEFAULT_CONFIG = defineConfig({
 } as const satisfies Required<Config>)
 
 export { packageJson }
+
+export const LOG_LEVELS = ['DEBUG', 'INFO', 'WARN', 'ERROR', 'SILENT'] as const
+
+export type LogLevel = typeof LOG_LEVELS[number]

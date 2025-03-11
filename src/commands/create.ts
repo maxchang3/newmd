@@ -1,7 +1,10 @@
+import { log } from '@/log'
 import { resolveConfig, writeMarkdownFile } from '@/utils'
 import { Frontmatter } from '@/utils/frontmatter'
 import { Command, Option } from 'clipanion'
 import { slug as slugify } from 'github-slugger'
+import c from 'ansis'
+
 
 export class CreateCommand extends Command {
     static usage = Command.Usage({
@@ -46,14 +49,14 @@ export class CreateCommand extends Command {
         const schema = config.schemas[this.schemaName]
 
         if (!schema) {
-            this.context.stderr.write(`Schema "${this.schemaName}" not found\n`)
+            log.error(`Schema "${c.cyan(this.schemaName)}" not found`)
             return 1
         }
 
         const titleKey = typeof config.titleMapping === 'string' ? config.titleMapping : config.titleMapping[this.schemaName]
 
         if (!titleKey) {
-            this.context.stderr.write(`Title key for schema "${this.schemaName}" not found\n`)
+            log.error(`Title key for schema "${c.cyan(this.schemaName)}" not found`)
             return 1
         }
 
@@ -68,14 +71,14 @@ export class CreateCommand extends Command {
             path: config.path,
         })
 
-        this.context.stdout.write(`File created at ${filepath}\n`)
+        log.info(`File created at ${c.cyan(filepath)}`)
     }
 
     async catch(error: unknown) {
         const { code: errorCode } = error as { code?: string }
         switch (errorCode) {
             case 'EEXIST':
-                this.context.stderr.write(`File already exists\n`)
+                log.error(`File already exists`)
                 return
             default:
                 throw error

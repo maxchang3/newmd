@@ -33,6 +33,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "ansis": "^3.17.0",
     "clipanion": "4.0.0-rc.4",
     "deepmerge-ts": "^7.1.5",
     "github-slugger": "^2.0.0",

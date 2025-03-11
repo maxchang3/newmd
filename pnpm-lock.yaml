@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      ansis:
+        specifier: ^3.17.0
+        version: 3.17.0
       clipanion:
         specifier: 4.0.0-rc.4
         version: 4.0.0-rc.4(typanion@3.14.0)
