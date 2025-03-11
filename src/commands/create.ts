@@ -77,7 +77,7 @@ export class CreateCommand extends Command {
         switch (errorCode) {
             case 'EEXIST':
                 log.error(`File already exists`)
-                return
+                break
             default:
                 throw error
         }
