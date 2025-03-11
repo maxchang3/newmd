@@ -1,4 +1,5 @@
-⚠️WIP⚠️
+> [!CAUTION]
+> This project is still in development, the API may change in the future, please use it with caution.
 
 <h1 align="center">➕ newmd </h1>
 
