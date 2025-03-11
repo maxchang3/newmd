@@ -8,7 +8,7 @@
   npx newmd blog "Hello World"
 </pre>
 
-<sup>\* `blog` is the default schema with some fields. You can specify your own schema in the config file.</sup>
+<sup>\* `blog` is the default schema with some fields. You can define your own schema in the config file.</sup>
 
 ## Usage
 
@@ -36,18 +36,16 @@ pubDate: 2025-03-09T01:57:00.000Z
 ---
 ```
 
-<sup>\* The `pubDate` field will be the current date and time.</sup>
-
-<sup>\* The default output path is `./src/data/blog`.</sup>
+<sup>\* The `pubDate` field will be filled with `new Date()`.</sup>
 
 See `newmd --help` for more details, you can install it globally for convenience.
 
 ## Config file
 
-You need to create a config file to specify the schemas for the frontmatter. If no schema is provided, the following schema will be used:
+You need to create a config file to define the schemas for the frontmatter. If no schema is provided, the following schema will be used:
 
 ```ts
-// newmd.config.[js,mjs.ts]
+// newmd.config.[js,mjs,ts]
 import { defineConfig } from 'newmd'
 
 export default defineConfig({
