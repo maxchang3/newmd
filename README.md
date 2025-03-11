@@ -39,11 +39,31 @@ pubDate: 2025-03-09T01:57:00.000Z
 
 <sup>\* The `pubDate` field will be filled with `new Date()`.</sup>
 
-See `newmd --help` for more details, you can install it globally for convenience.
+You can install it globally for convenience.
+
+### Options
+
+See `newmd --help` for more details, following is a brief description.
+
+<details>
+
+```sh
+newmd <schemaName> <title>
+```
+
+- `--content <value>` Set the content of the markdown file
+- `--cwd <value>` Set the current working directory
+- `--path <value>` Set the output directory
+- `--slug <value>` Set the slug for the filename, if not provided, it will be generated from the slugified title.
+- `--toml` Whether to use TOML format for frontmatter
+
+</details>
 
 ## Config file
 
-You need to create a config file to define the schemas for the frontmatter, if no config file is found, the following default config will be used:
+You need to create a config file to define the schemas for the frontmatter.
+
+The config structure and default values are as follows:
 
 ```ts
 // newmd.config.[js,mjs,ts]
