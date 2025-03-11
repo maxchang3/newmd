@@ -1,7 +1,9 @@
-import { LOG_LEVELS, type LogLevel } from '@/consts'
+import type { LogLevel } from '@/consts'
+import type { Ansis } from 'ansis'
 import type { Writable } from 'node:stream'
 import process from 'node:process'
-import c, { type Ansis } from 'ansis'
+import { LOG_LEVELS } from '@/consts'
+import c from 'ansis'
 
 interface LoggerContext {
     stdout: Writable
@@ -22,7 +24,7 @@ class Logger {
     static errorLevels = new Set<LogLevel>(['WARN', 'ERROR'])
 
     static prefixes: Record<LogLevel, string> = Object.fromEntries(
-        LOG_LEVELS.map(level => [level, Logger.colors[level](` ${level} `)])
+        LOG_LEVELS.map(level => [level, Logger.colors[level](` ${level} `)]),
     ) as Record<LogLevel, string>
 
     constructor(context: LoggerContext) {
