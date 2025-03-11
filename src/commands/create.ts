@@ -26,11 +26,11 @@ export class CreateCommand extends Command {
 
     title = Option.String()
 
-    cwd = Option.String('--cwd', { description: 'Specify the current working directory' })
+    cwd = Option.String('--cwd', { description: 'Set the current working directory' })
 
-    filepath = Option.String('--path', { description: 'Specify the output directory' })
+    filepath = Option.String('--path', { description: 'Set the output directory' })
 
-    slug = Option.String('--slug', { description: 'Specify the slug for the filename, if not provided, it will be generated from the slugified title.' })
+    slug = Option.String('--slug', { description: 'Set the slug for the filename, if not provided, it will be generated from the slugified title.' })
 
     toml = Option.Boolean('--toml', { description: 'Whether to use toml format for frontmatter' })
 
