@@ -1,4 +1,4 @@
-import { resolveConfig } from '@/config'
+import { resolveConfig } from '@/utils'
 import { resolve } from 'pathe'
 import { describe, expect, it } from 'vitest'
 

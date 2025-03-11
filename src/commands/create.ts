@@ -1,5 +1,4 @@
-import { resolveConfig } from '@/config'
-import { writeMarkdownFile } from '@/utils'
+import { resolveConfig, writeMarkdownFile } from '@/utils'
 import { Frontmatter } from '@/utils/frontmatter'
 import { Command, Option } from 'clipanion'
 import { slug as slugify } from 'github-slugger'
