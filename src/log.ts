@@ -51,3 +51,5 @@ export const log = new Logger({
     stdout: process.stdout,
     stderr: process.stderr,
 })
+
+export const link = c.cyan

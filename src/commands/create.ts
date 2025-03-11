@@ -1,10 +1,8 @@
-import { log } from '@/log'
+import { link, log } from '@/log'
 import { resolveConfig, writeMarkdownFile } from '@/utils'
 import { Frontmatter } from '@/utils/frontmatter'
 import { Command, Option } from 'clipanion'
 import { slug as slugify } from 'github-slugger'
-import c from 'ansis'
-
 
 export class CreateCommand extends Command {
     static usage = Command.Usage({
@@ -49,14 +47,14 @@ export class CreateCommand extends Command {
         const schema = config.schemas[this.schemaName]
 
         if (!schema) {
-            log.error(`Schema "${c.cyan(this.schemaName)}" not found`)
+            log.error(`Schema "${link(this.schemaName)}" not found`)
             return 1
         }
 
         const titleKey = typeof config.titleMapping === 'string' ? config.titleMapping : config.titleMapping[this.schemaName]
 
         if (!titleKey) {
-            log.error(`Title key for schema "${c.cyan(this.schemaName)}" not found`)
+            log.error(`Title key for schema "${link(this.schemaName)}" not found`)
             return 1
         }
 
@@ -71,7 +69,7 @@ export class CreateCommand extends Command {
             path: config.path,
         })
 
-        log.info(`File created at ${c.cyan(filepath)}`)
+        log.info(`File created at ${link(filepath)}`)
     }
 
     async catch(error: unknown) {
