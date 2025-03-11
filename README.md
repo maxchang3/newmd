@@ -52,7 +52,7 @@ export default defineConfig({
     // If true, the output frontmatter will be in TOML format.
     toml: false,
     // Root path for the markdown file.
-    path: './src/data/blog',
+    path: '.',
     // Schemas for the frontmatter.
     schemas: {
         blog: z.object({
