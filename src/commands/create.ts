@@ -34,7 +34,7 @@ export class CreateCommand extends Command {
 
     slug = Option.String('--slug', { description: 'Set the slug for the filename, if not provided, it will be generated from the slugified title.' })
 
-    toml = Option.Boolean('--toml', { description: 'Whether to use toml format for frontmatter' })
+    toml = Option.Boolean('--toml', { description: 'Whether to use TOML format for frontmatter' })
 
     async execute() {
         const config = await resolveConfig({
