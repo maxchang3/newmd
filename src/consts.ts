@@ -1,7 +1,6 @@
 import type { Config } from '@/types'
 import packageJson from '@/../package.json'
-import { defineConfig } from '@/index'
-import { z } from 'zod'
+import { defineConfig, z } from '@/index'
 
 export const DEFAULT_CONFIG = defineConfig({
     format: 'yaml',

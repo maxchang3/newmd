@@ -46,7 +46,7 @@ You need to create a config file to define the schemas for the frontmatter, if n
 
 ```ts
 // newmd.config.[js,mjs,ts]
-import { defineConfig } from 'newmd'
+import { defineConfig, z } from 'newmd'
 
 export default defineConfig({
     // The format of the frontmatter.

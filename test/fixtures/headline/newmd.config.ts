@@ -1,5 +1,4 @@
-import { z } from 'zod'
-import { defineConfig } from '../../../src/index'
+import { defineConfig, z } from '../../../src/index'
 
 export default (defineConfig({
     titleMapping: 'headline',
