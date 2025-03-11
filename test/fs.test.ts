@@ -11,6 +11,8 @@ beforeEach(() => {
 })
 
 describe('file system', () => {
+    const path = '/'
+    const cwd = '/'
     it('should write markdown file', async () => {
         const filename = 'hello-world'
         const frontmatter = '---\ntitle: Hello World\n---'
@@ -19,11 +21,22 @@ describe('file system', () => {
             filename,
             frontmatter,
             content,
-            path: '/',
-            cwd: '/',
+            path,
+            cwd,
         })
         expect(filepath).toBe(`/${filename}.md`)
         expect(vol.readdirSync('/')).toContain(`${filename}.md`)
         expect(vol.readFileSync(filepath, 'utf-8')).toBe(`${frontmatter}\n${content}`)
+    })
+
+    it('should not overwrite existing file', async () => {
+        vol.fromJSON({ '/hello-world.md': '---\ntitle: Hello World\n---\nHello World' })
+        await expect(writeMarkdownFile({
+            filename: 'hello-world',
+            frontmatter: '---\ntitle: Hello World\n---',
+            content: 'This should not overwrite',
+            path,
+            cwd,
+        })).rejects.toThrowErrorMatchingInlineSnapshot(`[Error: EEXIST: file already exists, open '/hello-world.md']`)
     })
 })
