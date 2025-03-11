@@ -4,7 +4,7 @@ import { defineConfig } from '@/index'
 import { z } from 'zod'
 
 export const DEFAULT_CONFIG = defineConfig({
-    toml: false,
+    format: 'yaml',
     path: '.',
     schemas: {
         blog: z.object({

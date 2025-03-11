@@ -4,7 +4,7 @@ import yaml from 'js-yaml'
 import toml from 'smol-toml'
 import { init as createSchemaDefaults } from 'zod-empty'
 
-type FrontmatterType = 'yaml' | 'toml'
+export type FrontmatterType = 'yaml' | 'toml'
 
 interface FrontmatterConfig<Metadata extends Record<string, any>> {
     /**
@@ -16,7 +16,7 @@ interface FrontmatterConfig<Metadata extends Record<string, any>> {
      */
     titleKey: StringKeys<Metadata>
     /**
-     * Type of frontmatter to generate, defaults to `yaml`.
+     * Type of frontmatter to generate.
      *
      * @defaultValue "yaml"
      */

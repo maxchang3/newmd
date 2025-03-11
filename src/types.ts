@@ -1,3 +1,4 @@
+import type { FrontmatterType } from '@/utils'
 import type { AnyZodObject, z } from 'zod'
 
 // Simple expand types, not perfect but works for this use case
@@ -18,9 +19,11 @@ export interface Config<Schemas extends Record<string, AnyZodObject> = Record<st
      */
     path?: string
     /**
-     * If true, the output frontmatter will be in TOML format.
+     * Format for the frontmatter
+     *
+     * @defaultValue "yaml"
      */
-    toml?: boolean
+    format?: FrontmatterType
     /**
      * Array of Zod schemas to be used for data generation.
      */

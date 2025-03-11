@@ -38,7 +38,7 @@ export class CreateCommand extends Command {
 
     async execute() {
         const config = await resolveConfig({
-            toml: this.toml,
+            format: this.toml ? 'toml' : 'yaml',
             path: this.filepath,
         }, {
             cwd: this.cwd,

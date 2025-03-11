@@ -42,15 +42,15 @@ See `newmd --help` for more details, you can install it globally for convenience
 
 ## Config file
 
-You need to create a config file to define the schemas for the frontmatter. If no schema is provided, the following schema will be used:
+You need to create a config file to define the schemas for the frontmatter, if no config file is found, the following default config will be used:
 
 ```ts
 // newmd.config.[js,mjs,ts]
 import { defineConfig } from 'newmd'
 
 export default defineConfig({
-    // If true, the output frontmatter will be in TOML format.
-    toml: false,
+    // The format of the frontmatter.
+    format: 'yaml',
     // Root path for the markdown file.
     path: '.',
     // Schemas for the frontmatter.

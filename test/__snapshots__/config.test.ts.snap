@@ -2,6 +2,7 @@
 
 exports[`config > should return default config 1`] = `
 {
+  "format": "yaml",
   "path": ".",
   "schemas": {
     "blog": ZodObject {
@@ -79,12 +80,12 @@ exports[`config > should return default config 1`] = `
     },
   },
   "titleMapping": "title",
-  "toml": false,
 }
 `;
 
 exports[`config > should return merged config 1`] = `
 {
+  "format": "yaml",
   "path": ".",
   "schemas": {
     "blog": ZodObject {
@@ -162,6 +163,5 @@ exports[`config > should return merged config 1`] = `
     },
   },
   "titleMapping": "headline",
-  "toml": false,
 }
 `;
