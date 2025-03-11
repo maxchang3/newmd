@@ -13,15 +13,17 @@ beforeEach(() => {
 describe('file system', () => {
     it('should write markdown file', async () => {
         const filename = 'hello-world'
+        const frontmatter = '---\ntitle: Hello World\n---'
         const content = 'Hello World'
         const filepath = await writeMarkdownFile({
             filename,
+            frontmatter,
             content,
             path: '/',
             cwd: '/',
         })
         expect(filepath).toBe(`/${filename}.md`)
         expect(vol.readdirSync('/')).toContain(`${filename}.md`)
-        expect(vol.readFileSync(filepath, 'utf-8')).toBe(content)
+        expect(vol.readFileSync(filepath, 'utf-8')).toBe(`${frontmatter}\n${content}`)
     })
 })

@@ -63,7 +63,8 @@ export class CreateCommand extends Command {
 
         const filepath = await writeMarkdownFile({
             filename: slugify(this.slug ?? this.title),
-            content: `${frontmatter.toString(this.title)}\n${this.content ?? ''}`,
+            frontmatter: frontmatter.toString(this.title),
+            content: this.content,
             path: config.path,
         })
 
