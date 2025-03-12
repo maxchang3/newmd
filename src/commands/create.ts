@@ -28,13 +28,15 @@ export class CreateCommand extends Command {
 
     content = Option.String('--content', { description: 'Set the content of the markdown file' })
 
-    cwd = Option.String('--cwd', { description: 'Set the current working directory' })
-
     filepath = Option.String('--path', { description: 'Set the output directory' })
 
     slug = Option.String('--slug', { description: 'Set the slug for the filename, if not provided, it will be generated from the slugified title.' })
 
     toml = Option.Boolean('--toml', { description: 'Whether to use TOML format for frontmatter' })
+
+    overwrite = Option.Boolean('--overwrite', { description: 'Overwrite existing file' })
+
+    cwd = Option.String('--cwd', { description: 'Set the current working directory' })
 
     async execute() {
         const config = await resolveConfig({
@@ -67,6 +69,7 @@ export class CreateCommand extends Command {
             frontmatter: frontmatter.toString(this.title),
             content: this.content,
             path: config.path,
+            overwrite: this.overwrite,
         })
 
         log.info(`File created at ${link(filepath)}`)
