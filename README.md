@@ -52,10 +52,11 @@ newmd <schemaName> <title>
 ```
 
 - `--content <value>` Set the content of the markdown file
-- `--cwd <value>` Set the current working directory
 - `--path <value>` Set the output directory
 - `--slug <value>` Set the slug for the filename, if not provided, it will be generated from the slugified title.
-- `--toml` Whether to use TOML format for frontmatter
+- `--cwd <value>` Set the current working directory
+- `--toml` Whether to use TOML format for frontmatter, default is `false`
+- `--overwrite` Whether to overwrite the existing file, default is `false`
 
 </details>
 
