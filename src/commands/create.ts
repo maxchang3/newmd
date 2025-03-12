@@ -79,7 +79,7 @@ export class CreateCommand extends Command {
         const { code: errorCode } = error as { code?: string }
         switch (errorCode) {
             case 'EEXIST':
-                log.error(`File already exists`)
+                log.error(`File already exists, use ${link('--overwrite')} to overwrite`)
                 break
             default:
                 throw error
