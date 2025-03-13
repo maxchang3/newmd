@@ -87,6 +87,54 @@ export default defineConfig({
 })
 ```
 
+## Integration
+
+### With [Astro](https://astro.build/)
+
+<details>
+
+Say you have this content config file:
+
+```ts
+// src/content.config.ts
+import { glob } from 'astro/loaders'
+import { defineCollection, z } from 'astro:content'
+
+const blog = defineCollection({
+    loader: glob({ pattern: '**/*.md', base: './src/data/blog' }),
+    schema: z.object({
+        title: z.string(),
+        permalink: z.string().optional(),
+    }),
+})
+
+export const collections = { blog }
+```
+
+You can create a newmd config file like this:
+
+```ts
+// newmd.config.ts
+import { defineConfig, z } from 'newmd'
+
+export default defineConfig({
+    // Corresponding to the `base` option in the content config.
+    path: './src/data/blog',
+    schemas: { // Copy the schema from the content config.
+        blog: z.object({
+            title: z.string(),
+            description: z.string().optional(),
+            pubDate: z.coerce.date(),
+            updatedDate: z.coerce.date().optional(),
+        }),
+    },
+})
+```
+
+Now you can use the same schema to create markdown files with frontmatter by running `npx newmd blog "Hello World"`.
+
+</details>
+
 ## Credits
 
 This project won't be possible without [@toiroakr](https://github.com/toiroakr)'s [zod-empty](https://github.com/toiroakr/zod-empty/) and other open-source projects.
