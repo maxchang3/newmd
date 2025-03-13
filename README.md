@@ -3,7 +3,7 @@
 
 <h1 align="center">➕ newmd </h1>
 
-<p align="center">Create markdown file with frontmatter using Zod schema.</p>
+<p align="center">A CLI tool that creates markdown files with frontmatter using a Zod schema.</p>
 
 <pre align="center">
   npx newmd blog "Hello World"
