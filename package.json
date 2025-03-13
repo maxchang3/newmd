@@ -12,6 +12,12 @@
     "url": "git+https://github.com/maxchang3/newmd.git"
   },
   "bugs": "https://github.com/maxchang3/newmd/issues",
+  "keywords": [
+    "zod",
+    "schema",
+    "markdown",
+    "frontmatter"
+  ],
   "sideEffects": false,
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
