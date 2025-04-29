@@ -12,12 +12,7 @@
     "url": "git+https://github.com/maxchang3/newmd.git"
   },
   "bugs": "https://github.com/maxchang3/newmd/issues",
-  "keywords": [
-    "zod",
-    "schema",
-    "markdown",
-    "frontmatter"
-  ],
+  "keywords": ["zod", "schema", "markdown", "frontmatter"],
   "sideEffects": false,
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
@@ -25,14 +20,12 @@
   "bin": {
     "newmd": "bin/newmd.mjs"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "lint": "biome check",
+    "lint:fix": "biome check --write .",
     "prepublishOnly": "pnpm run build",
     "release": "bumpp && pnpm publish",
     "start": "esno src/cli.ts",
@@ -53,11 +46,11 @@
     "zod-empty": "^1.4.5"
   },
   "devDependencies": {
-    "@maxchang/eslint-config": "^1.0.17",
+    "@biomejs/biome": "^1.9.4",
+    "@maxchang/biome-config": "^0.0.4",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.17.32",
     "bumpp": "^10.1.0",
-    "eslint": "^9.25.1",
     "esno": "^4.8.0",
     "memfs": "^4.17.0",
     "tinyexec": "^1.0.1",
@@ -67,8 +60,6 @@
     "vitest": "^3.1.2"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
+    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild"]
   }
 }
