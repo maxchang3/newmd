@@ -1,7 +1,7 @@
 import type { StringKeys, ZodStringKeys } from '@/types'
-import type { AnyZodObject } from 'zod'
 import yaml from 'js-yaml'
 import toml from 'smol-toml'
+import type { AnyZodObject } from 'zod'
 import { init as createSchemaDefaults } from 'zod-empty'
 
 export type FrontmatterType = 'yaml' | 'toml'
@@ -30,10 +30,13 @@ export class Frontmatter<Metadata extends Record<string, any>> {
         this.config = { baseMetadata, type, titleKey }
     }
 
-    static fromZodSchema<Schema extends AnyZodObject>(schema: Schema, options: {
-        titleKey: ZodStringKeys<Schema>
-        type?: FrontmatterType
-    }) {
+    static fromZodSchema<Schema extends AnyZodObject>(
+        schema: Schema,
+        options: {
+            titleKey: ZodStringKeys<Schema>
+            type?: FrontmatterType
+        }
+    ) {
         const { titleKey, type = 'yaml' } = options
         const defaultData = createSchemaDefaults(schema)
         return new Frontmatter({ baseMetadata: defaultData, type, titleKey })
@@ -43,7 +46,7 @@ export class Frontmatter<Metadata extends Record<string, any>> {
         const { titleKey, baseMetadata } = this.config
         const metadata = structuredClone(baseMetadata)
         const filteredMetadata = Object.fromEntries(
-            Object.entries(metadata).filter(([_, value]) => value !== null),
+            Object.entries(metadata).filter(([_, value]) => value !== null)
         )
         if (titleKey in filteredMetadata) {
             // @ts-expect-error titleKey is a valid key in metadata

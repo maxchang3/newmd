@@ -13,7 +13,9 @@ type ZodStringKeysFromSchemas<
     K extends keyof Schemas = keyof Schemas,
 > = ZodStringKeys<Schemas[K]>
 
-export interface Config<Schemas extends Record<string, AnyZodObject> = Record<string, AnyZodObject>> {
+export interface Config<
+    Schemas extends Record<string, AnyZodObject> = Record<string, AnyZodObject>,
+> {
     /**
      * Root path for the markdown file.
      */
@@ -44,5 +46,7 @@ export interface Config<Schemas extends Record<string, AnyZodObject> = Record<st
      *
      * @defaultValue "title"
      */
-    titleMapping?: ZodStringKeysFromSchemas<Schemas> | { [K in keyof Schemas]?: ZodStringKeysFromSchemas<Schemas, K> }
+    titleMapping?:
+        | ZodStringKeysFromSchemas<Schemas>
+        | { [K in keyof Schemas]?: ZodStringKeysFromSchemas<Schemas, K> }
 }

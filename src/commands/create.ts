@@ -16,35 +16,50 @@ export class CreateCommand extends Command {
 
             3. Creates output file using \`<title>\` or \`--slug\` for filename construction.
         `,
-        examples: [[
-            `Create from \`blog\` schema with title "Hello World"`,
-            `$0 blog "Hello World"`,
-        ]],
+        examples: [
+            [`Create from \`blog\` schema with title "Hello World"`, `$0 blog "Hello World"`],
+        ],
     })
 
     schemaName = Option.String()
 
     title = Option.String()
 
-    content = Option.String('--content', { description: 'Set the content of the markdown file' })
+    content = Option.String('--content', {
+        description: 'Set the content of the markdown file',
+    })
 
-    filepath = Option.String('--path', { description: 'Set the output directory' })
+    filepath = Option.String('--path', {
+        description: 'Set the output directory',
+    })
 
-    slug = Option.String('--slug', { description: 'Set the slug for the filename, if not provided, it will be generated from the slugified title.' })
+    slug = Option.String('--slug', {
+        description:
+            'Set the slug for the filename, if not provided, it will be generated from the slugified title.',
+    })
 
-    toml = Option.Boolean('--toml', { description: 'Whether to use TOML format for frontmatter' })
+    toml = Option.Boolean('--toml', {
+        description: 'Whether to use TOML format for frontmatter',
+    })
 
-    overwrite = Option.Boolean('--overwrite', { description: 'Overwrite existing file' })
+    overwrite = Option.Boolean('--overwrite', {
+        description: 'Overwrite existing file',
+    })
 
-    cwd = Option.String('--cwd', { description: 'Set the current working directory' })
+    cwd = Option.String('--cwd', {
+        description: 'Set the current working directory',
+    })
 
     async execute() {
-        const config = await resolveConfig({
-            format: this.toml ? 'toml' : 'yaml',
-            path: this.filepath,
-        }, {
-            cwd: this.cwd,
-        })
+        const config = await resolveConfig(
+            {
+                format: this.toml ? 'toml' : 'yaml',
+                path: this.filepath,
+            },
+            {
+                cwd: this.cwd,
+            }
+        )
 
         const schema = config.schemas[this.schemaName]
 
@@ -53,7 +68,10 @@ export class CreateCommand extends Command {
             return 1
         }
 
-        const titleKey = typeof config.titleMapping === 'string' ? config.titleMapping : config.titleMapping[this.schemaName]
+        const titleKey =
+            typeof config.titleMapping === 'string'
+                ? config.titleMapping
+                : config.titleMapping[this.schemaName]
 
         if (!titleKey) {
             log.error(`Title key for schema "${link(this.schemaName)}" not found`)
@@ -62,7 +80,10 @@ export class CreateCommand extends Command {
 
         const type = this.toml ? 'toml' : 'yaml'
 
-        const frontmatter = Frontmatter.fromZodSchema(schema, { titleKey, type })
+        const frontmatter = Frontmatter.fromZodSchema(schema, {
+            titleKey,
+            type,
+        })
 
         const filepath = await writeMarkdownFile({
             filename: slugify(this.slug ?? this.title),

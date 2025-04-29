@@ -1,11 +1,14 @@
-import type { Config } from '@/types'
 import { DEFAULT_CONFIG } from '@/consts'
+import type { Config } from '@/types'
 import { deepmerge } from 'deepmerge-ts'
 import { createConfigLoader } from 'unconfig'
 
-export const resolveConfig = async (config?: Config, options?: {
-    cwd?: string
-}) => {
+export const resolveConfig = async (
+    config?: Config,
+    options?: {
+        cwd?: string
+    }
+) => {
     const loader = createConfigLoader<Config>({
         sources: [
             {

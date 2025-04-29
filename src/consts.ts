@@ -1,6 +1,6 @@
-import type { Config } from '@/types'
 import packageJson from '@/../package.json'
 import { defineConfig, z } from '@/index'
+import type { Config } from '@/types'
 
 export const DEFAULT_CONFIG = defineConfig({
     format: 'yaml',
@@ -20,4 +20,4 @@ export { packageJson }
 
 export const LOG_LEVELS = ['DEBUG', 'INFO', 'WARN', 'ERROR', 'SILENT'] as const
 
-export type LogLevel = typeof LOG_LEVELS[number]
+export type LogLevel = (typeof LOG_LEVELS)[number]

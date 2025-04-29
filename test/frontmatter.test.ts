@@ -49,6 +49,6 @@ describe('frontmatter', () => {
             titleKey: 'title',
         })
         const result = frontmatter.toString('Hello World')
-        expect(result).toBe('---\ntitle: Hello World\ndescription: \'\'\n---\n')
+        expect(result).toBe("---\ntitle: Hello World\ndescription: ''\n---\n")
     })
 })

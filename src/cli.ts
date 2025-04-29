@@ -12,7 +12,7 @@ const initCli = () => {
         binaryVersion: packageJson.version,
     })
 
-    commands.forEach(command => cli.register(command))
+    commands.forEach((command) => cli.register(command))
     cli.runExit(args)
 }
 

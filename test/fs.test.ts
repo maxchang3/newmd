@@ -29,14 +29,21 @@ describe('file system', () => {
 
     it('should not overwrite existing file', async () => {
         vol.fromJSON({ '/hello-world.md': filecontent })
-        await expect(writeMarkdownFile(options)).rejects.toThrow(expect.objectContaining({
-            message: expect.stringContaining('EEXIST'),
-        }))
+        await expect(writeMarkdownFile(options)).rejects.toThrow(
+            expect.objectContaining({
+                message: expect.stringContaining('EEXIST'),
+            })
+        )
     })
 
     it('should overwrite existing file when overwrite option is true', async () => {
-        vol.fromJSON({ '/hello-world.md': '---\ntitle: Old Title\n---\nOld Content' })
-        const filepath = await writeMarkdownFile({ ...options, overwrite: true })
+        vol.fromJSON({
+            '/hello-world.md': '---\ntitle: Old Title\n---\nOld Content',
+        })
+        const filepath = await writeMarkdownFile({
+            ...options,
+            overwrite: true,
+        })
         expect(filepath).toBe(`/${options.filename}.md`)
         expect(vol.readFileSync(filepath, 'utf-8')).toBe(filecontent)
     })
