@@ -8,6 +8,11 @@
 
 <sup>\* `blog` is the default schema with some fields. You can define your own schema in the config file.</sup>
 
+[![npm](https://img.shields.io/npm/v/newmd.svg?style=flat-square&color=444)](https://www.npmjs.com/package/newmd)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/maxchang3/newmd/ci.yml?style=flat-square&label=CI)](https://github.com/maxchang3/newmd/actions)
+[![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat-square&logo=biome)](https://biomejs.dev)
+[![License](https://img.shields.io/github/license/maxchang3/newmd?style=flat-square)](LICENSE)
+
 ## Usage
 
 ## CLI
