@@ -1,7 +1,7 @@
 {
   "name": "newmd",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "packageManager": "pnpm@10.11.0",
   "description": "A CLI tool that creates markdown files with frontmatter using a Zod schema.",
   "author": "Max Chang <maxcfoo@gmail.com>",
