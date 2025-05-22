@@ -12,12 +12,7 @@
     "url": "git+https://github.com/maxchang3/newmd.git"
   },
   "bugs": "https://github.com/maxchang3/newmd/issues",
-  "keywords": [
-    "zod",
-    "schema",
-    "markdown",
-    "frontmatter"
-  ],
+  "keywords": ["zod", "schema", "markdown", "frontmatter"],
   "sideEffects": false,
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
@@ -25,9 +20,7 @@
   "bin": {
     "newmd": "bin/newmd.mjs"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
@@ -66,9 +59,6 @@
     "vitest": "^3.1.4"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "esbuild"
-    ]
+    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild"]
   }
 }
