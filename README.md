@@ -218,7 +218,9 @@ Now you can use the same schema to create markdown files with frontmatter by run
 
 ## Credits
 
-This project won't be possible without [@toiroakr](https://github.com/toiroakr)'s [zod-empty](https://github.com/toiroakr/zod-empty/) and other open-source projects.
+- 🙏 Huge thanks to [@toiroakr](https://github.com/toiroakr) for [zod-empty](https://github.com/toiroakr/zod-empty/) and other awesome open-source projects.
+- 🎬 Shout out to [@coding-in-public](https://github.com/coding-in-public) for the great intro video: [Watch on YouTube](https://www.youtube.com/watch?v=nhNbjt4q9Ms)
+
 
 ## License
 
