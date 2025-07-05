@@ -78,6 +78,19 @@ export class CreateCommand extends Command {
             return 1
         }
 
+        // Resolve the path for this specific schema
+        const schemaPath =
+            typeof config.path === 'string' ? config.path : config.path?.[this.schemaName]
+
+        if (typeof config.path === 'object' && !schemaPath) {
+            log.error(
+                `Path for schema "${link(this.schemaName)}" not found. When using schema-specified path configuration, all schemas must have a defined path.`
+            )
+            return 1
+        }
+
+        const finalPath = schemaPath ?? '.'
+
         const type = this.toml ? 'toml' : 'yaml'
 
         const frontmatter = Frontmatter.fromZodSchema(schema, {
@@ -89,7 +102,7 @@ export class CreateCommand extends Command {
             filename: slugify(this.slug ?? this.title),
             frontmatter: frontmatter.toString(this.title),
             content: this.content,
-            path: config.path,
+            path: finalPath,
             overwrite: this.overwrite,
         })
 

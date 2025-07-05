@@ -18,8 +18,19 @@ export interface Config<
 > {
     /**
      * Root path for the markdown file.
+     *
+     * - If a string is provided, it is used as the default path for all schemas.
+     * - If an object is provided, it must specify paths for ALL schemas defined in the config.
+     *
+     * Example usage:
+     * ```ts
+     * path: "./content"; // Applies "./content" to all schemas
+     * path: { blog: "./content/blog", docs: "./docs" }; // Must include ALL schemas
+     * ```
+     *
+     * @defaultValue "."
      */
-    path?: string
+    path?: string | { [K in keyof Schemas]: string }
     /**
      * Format for the frontmatter
      *

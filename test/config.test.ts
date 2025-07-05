@@ -15,4 +15,14 @@ describe('config', () => {
         const config = await resolveConfig({}, { cwd })
         expect(config).matchSnapshot()
     })
+
+    it('should support schema-specific paths', async () => {
+        const cwd = resolve(fixtureDir, 'schema-paths')
+        const config = await resolveConfig({}, { cwd })
+
+        // Test that path config is resolved as object form with all schemas
+        expect(config.path).toMatchSnapshot('schema-specific-paths')
+        expect(config.format).toBe('yaml')
+        expect(config.titleMapping).toBe('title')
+    })
 })

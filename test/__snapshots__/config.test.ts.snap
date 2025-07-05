@@ -165,3 +165,11 @@ exports[`config > should return merged config 1`] = `
   "titleMapping": "headline",
 }
 `;
+
+exports[`config > should support schema-specific paths > schema-specific-paths 1`] = `
+{
+  "article": "./content/articles",
+  "blog": "./content/blog",
+  "docs": "./content/docs",
+}
+`;
