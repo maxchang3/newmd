@@ -1,8 +1,8 @@
+import { Command, Option } from 'clipanion'
+import { slug as slugify } from 'github-slugger'
 import { link, log } from '@/log'
 import { resolveConfig, writeMarkdownFile } from '@/utils'
 import { Frontmatter } from '@/utils/frontmatter'
-import { Command, Option } from 'clipanion'
-import { slug as slugify } from 'github-slugger'
 
 export class CreateCommand extends Command {
     static usage = Command.Usage({

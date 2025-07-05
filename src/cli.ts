@@ -1,7 +1,7 @@
 import process from 'node:process'
+import { Cli } from 'clipanion'
 import { commands } from '@/commands'
 import { packageJson } from '@/consts'
-import { Cli } from 'clipanion'
 
 const initCli = () => {
     const [_node, _app, ...args] = process.argv

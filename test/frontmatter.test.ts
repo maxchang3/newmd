@@ -1,6 +1,6 @@
-import { Frontmatter } from '@/utils'
 import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
+import { Frontmatter } from '@/utils'
 
 describe('frontmatter', () => {
     it('should generate frontmatter in yaml format', () => {

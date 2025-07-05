@@ -1,9 +1,9 @@
 import process from 'node:process'
 import type { Writable } from 'node:stream'
-import type { LogLevel } from '@/consts'
-import { LOG_LEVELS } from '@/consts'
 import type { Ansis } from 'ansis'
 import c from 'ansis'
+import type { LogLevel } from '@/consts'
+import { LOG_LEVELS } from '@/consts'
 
 interface LoggerContext {
     stdout: Writable

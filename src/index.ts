@@ -1,5 +1,5 @@
-import type { Config } from '@/types'
 import type { AnyZodObject } from 'zod'
+import type { Config } from '@/types'
 
 export { z } from 'zod'
 

@@ -1,7 +1,7 @@
-import type { MarkdownOptions } from '@/utils'
-import { writeMarkdownFile } from '@/utils'
 import { vol } from 'memfs'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import type { MarkdownOptions } from '@/utils'
+import { writeMarkdownFile } from '@/utils'
 
 vi.mock('node:fs')
 vi.mock('node:fs/promises')

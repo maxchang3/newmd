@@ -1,5 +1,5 @@
-import type { FrontmatterType } from '@/utils'
 import type { AnyZodObject, z } from 'zod'
+import type { FrontmatterType } from '@/utils'
 
 // Simple expand types, not perfect but works for this use case
 type Expand<T> = T extends infer O ? O : never

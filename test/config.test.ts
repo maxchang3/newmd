@@ -1,6 +1,6 @@
-import { resolveConfig } from '@/utils'
 import { resolve } from 'pathe'
 import { describe, expect, it } from 'vitest'
+import { resolveConfig } from '@/utils'
 
 const fixtureDir = resolve(__dirname, 'fixtures')
 

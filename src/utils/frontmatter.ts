@@ -1,8 +1,8 @@
-import type { StringKeys, ZodStringKeys } from '@/types'
 import yaml from 'js-yaml'
 import toml from 'smol-toml'
 import type { AnyZodObject } from 'zod'
 import { init as createSchemaDefaults } from 'zod-empty'
+import type { StringKeys, ZodStringKeys } from '@/types'
 
 export type FrontmatterType = 'yaml' | 'toml'
 
