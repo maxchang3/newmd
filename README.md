@@ -182,7 +182,7 @@ import { glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
 
 const blog = defineCollection({
-    loader: glob({ pattern: '**/*.md', base: './src/data/blog' }),
+    loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
     schema: z.object({
         title: z.string(),
         permalink: z.string().optional(),
@@ -200,7 +200,7 @@ import { defineConfig, z } from 'newmd'
 
 export default defineConfig({
     // Corresponding to the `base` option in the content config.
-    path: './src/data/blog',
+    path: './src/content/blog',
     schemas: { // Copy the schema from the content config.
         blog: z.object({
             title: z.string(),
