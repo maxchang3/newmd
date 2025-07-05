@@ -8,10 +8,11 @@
 
 <sup>\* `blog` is the default schema with some fields. You can define your own schema in the config file.</sup>
 
-[![npm](https://img.shields.io/npm/v/newmd.svg?style=flat-square&color=444)](https://www.npmjs.com/package/newmd)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/maxchang3/newmd/ci.yml?style=flat-square&label=CI)](https://github.com/maxchang3/newmd/actions)
-[![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat-square&logo=biome)](https://biomejs.dev)
-[![License](https://img.shields.io/github/license/maxchang3/newmd?style=flat-square)](LICENSE)
+[![npm][npm-badge]][npm-url]
+[![GitHub Workflow Status][ci-badge]][ci-url]
+[![Checked with Biome][biome-badge]][biome-url]
+[![License][license-badge]][license-url]
+[![Watch Intro Video][video-badge]][video-url]
 
 ## Usage
 
@@ -225,3 +226,14 @@ Now you can use the same schema to create markdown files with frontmatter by run
 ## License
 
 [MIT](./LICENSE) License © 2024-PRESENT [Max Chang](https://github.com/maxchang3)
+
+[npm-badge]: https://img.shields.io/npm/v/newmd.svg?style=flat-square&color=444
+[npm-url]: https://www.npmjs.com/package/newmd
+[ci-badge]: https://img.shields.io/github/actions/workflow/status/maxchang3/newmd/ci.yml?style=flat-square&label=CI
+[ci-url]: https://github.com/maxchang3/newmd/actions
+[biome-badge]: https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat-square&logo=biome
+[biome-url]: https://biomejs.dev
+[license-badge]: https://img.shields.io/github/license/maxchang3/newmd?style=flat-square
+[license-url]: LICENSE
+[video-badge]: https://img.shields.io/badge/Watch_Intro-YouTube-red?style=flat-square&logo=youtube
+[video-url]: https://www.youtube.com/watch?v=nhNbjt4q9Ms
