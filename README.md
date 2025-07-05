@@ -99,6 +99,75 @@ export default defineConfig({
 })
 ```
 
+### Title Field Mapping
+
+By default, newmd expects a `title` field in your schema and maps the title argument to this field. However, you can customize which field should receive the title value using the `titleMapping` option.
+
+#### Global mapping
+
+Use a string to apply the same field name to all schemas:
+
+<details>
+
+```ts
+// newmd.config.ts
+import { defineConfig, z } from 'newmd'
+
+export default defineConfig({
+    titleMapping: 'headline', // Map title to 'headline' field for all schemas
+    schemas: {
+        blog: z.object({
+            headline: z.string(), // Must have 'headline' field instead of 'title'
+            description: z.string().optional(),
+            pubDate: z.coerce.date(),
+        }),
+        article: z.object({
+            headline: z.string(), // All schemas must have 'headline' field
+            author: z.string().optional(),
+        }),
+    },
+})
+```
+
+</details>
+
+#### Per-schema mapping
+
+Use an object to specify different field names for each schema:
+
+<details>
+
+
+```ts
+// newmd.config.ts
+import { defineConfig, z } from 'newmd'
+
+export default defineConfig({
+    titleMapping: {
+        blog: 'title',      // Blog uses 'title' field
+        article: 'headline', // Article uses 'headline' field  
+        docs: 'name',       // Docs uses 'name' field
+    },
+    schemas: {
+        blog: z.object({
+            title: z.string(),    // Must match the mapping
+            pubDate: z.coerce.date(),
+        }),
+        article: z.object({
+            headline: z.string(), // Must match the mapping
+            author: z.string().optional(),
+        }),
+        docs: z.object({
+            name: z.string(),     // Must match the mapping
+            category: z.string().optional(),
+        }),
+    },
+})
+```
+
+</details>
+
+
 ## Integration
 
 ### With [Astro](https://astro.build/)
