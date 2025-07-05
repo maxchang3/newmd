@@ -75,8 +75,18 @@ import { defineConfig, z } from 'newmd'
 export default defineConfig({
     // The format of the frontmatter.
     format: 'yaml',
-    // Root path for the markdown file.
-    path: '.',
+    
+      // Root path for the markdown file.
+      // Use a string for a single path applied to all schemas:
+      path: '.',
+      
+      // Or use an object to specify different paths per schema:
+      // path: {
+      //   blog: './content/blog',
+      //   docs: './docs',
+      //   articles: './content/articles',
+      // },
+    
     // Schemas for the frontmatter.
     schemas: {
         blog: z.object({
