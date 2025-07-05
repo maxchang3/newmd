@@ -37,6 +37,7 @@
     "release": "bumpp && pnpm publish",
     "start": "esno src/cli.ts",
     "test": "vitest",
+    "test:ci": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
